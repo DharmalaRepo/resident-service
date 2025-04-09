@@ -1,0 +1,10 @@
+com/tech/society/service/impl/EmailServiceImpl.class
+com/tech/society/dto/UserDto.class
+com/tech/society/repository/UserRepository.class
+com/tech/society/entity/User.class
+com/tech/society/service/impl/ResidentServiceImpl.class
+com/tech/society/controller/UserController.class
+com/tech/society/service/ResidentService.class
+com/tech/society/service/impl/EmailServiceImpl$1.class
+com/tech/society/service/RegistrationService.class
+com/tech/society/ResidentServiceApplication.class
