@@ -1,4 +1,6 @@
 /Users/shivadharmala/Documents/GIT Project/Society_Project/resident-service/src/main/java/com/tech/society/ResidentServiceApplication.java
+/Users/shivadharmala/Documents/GIT Project/Society_Project/resident-service/src/main/java/com/tech/society/config/SecurityConfig.java
+/Users/shivadharmala/Documents/GIT Project/Society_Project/resident-service/src/main/java/com/tech/society/controller/TestController.java
 /Users/shivadharmala/Documents/GIT Project/Society_Project/resident-service/src/main/java/com/tech/society/controller/UserController.java
 /Users/shivadharmala/Documents/GIT Project/Society_Project/resident-service/src/main/java/com/tech/society/dto/UserDto.java
 /Users/shivadharmala/Documents/GIT Project/Society_Project/resident-service/src/main/java/com/tech/society/entity/User.java

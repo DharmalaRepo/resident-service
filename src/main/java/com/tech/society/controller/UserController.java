@@ -6,6 +6,7 @@ import com.tech.society.dto.UserDto;
 import com.tech.society.service.RegistrationService;
 import com.tech.society.service.ResidentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,7 +46,7 @@ public class UserController {
         return ResponseEntity.ok("User registered successfully");
     }
 
-    @GetMapping
+    @GetMapping("/getAllUsers")
     public ResponseEntity<List<UserDto>> getAllUsers() {
         return ResponseEntity.ok(userService.getAllUsers());
     }
