@@ -45,7 +45,7 @@ public class ResidentService {
             resident.setMobileNumber(updatedResident.getMobileNumber());
             resident.setEmail(updatedResident.getEmail());
             resident.setWhatsappNumber(updatedResident.getWhatsappNumber());
-            resident.setVehicles(updatedResident.getVehicles());
+            //resident.setVehicles(updatedResident.getVehicles());
             resident.setModifiedDate(updatedResident.getModifiedDate());
             resident.setModifiedBy(updatedResident.getModifiedBy());
             return residentRepository.save(resident);
