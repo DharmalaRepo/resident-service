@@ -51,6 +51,16 @@ public class Resident {
         this.isActive = isActive;
     }
 
+    private int societyId;
+
+    public int getSocietyId() {
+        return societyId;
+    }
+
+    public void setSocietyId(int societyId) {
+        this.societyId = societyId;
+    }
+
     public String getId() {
         return id;
     }

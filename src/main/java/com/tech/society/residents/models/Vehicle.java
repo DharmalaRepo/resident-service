@@ -37,6 +37,16 @@ public class Vehicle {
         this.id = id;
     }
 
+    private int societyId;
+
+    public int getSocietyId() {
+        return societyId;
+    }
+
+    public void setSocietyId(int societyId) {
+        this.societyId = societyId;
+    }
+
     public int getCustomId() {
         return customId;
     }
