@@ -15,6 +15,11 @@ public class ResidentController {
     @Autowired
     private ResidentService residentService;
 
+    @GetMapping("/health")
+    public ResponseEntity<?> health() {
+        return ResponseEntity.ok("Hello, welcome to Society Residents Service..!!");
+    }
+
     // Get all residents
     @GetMapping
     public ResponseEntity<List<Resident>> getAllResidents() {
