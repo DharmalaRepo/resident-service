@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: resident-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: resident-service
+  template:
+    metadata:
+      labels:
+        app: resident-service
+    spec:
+      containers:
+        - name: resident-service
+          image: dharmala/resident-service:2504172
+          ports:
+            - containerPort: 9093
