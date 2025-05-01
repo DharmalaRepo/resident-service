@@ -1,40 +1,30 @@
 package com.tech.society.residents.models;
 
-
-import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
 @Document(collection = "broadcast_messages")
-public class BroadcastMessage {
+public class BroadcastMessage extends AuditableModel {
+
     @Id
     private String id;
-    private int customId;
+
+    private String broadcastId;
+    private String societyIdentifier;
+
     private String title;
     private String message;
-    private String audience; // ALL or SELECTED
-    private List<String> flatNumbers;
-    private String sentBy;
+    private String audience;                   // ALL, BLOCK, FLAT_SPECIFIC
+    private List<String> flatNumbers;          // if targeted
+    private List<String> deliveryMethods;
+
     private LocalDateTime sentAt;
-    private String deliveryMethod; // EMAIL / WHATSAPP / SMS
-    private int isActive;
+    private String sentBy;
 
-    private int societyId;
-
-    public int getSocietyId() {
-        return societyId;
-    }
-
-    public void setSocietyId(int societyId) {
-        this.societyId = societyId;
-    }
+    private boolean active = true;
 
     public String getId() {
         return id;
@@ -44,12 +34,20 @@ public class BroadcastMessage {
         this.id = id;
     }
 
-    public int getCustomId() {
-        return customId;
+    public String getBroadcastId() {
+        return broadcastId;
     }
 
-    public void setCustomId(int customId) {
-        this.customId = customId;
+    public void setBroadcastId(String broadcastId) {
+        this.broadcastId = broadcastId;
+    }
+
+    public String getSocietyIdentifier() {
+        return societyIdentifier;
+    }
+
+    public void setSocietyIdentifier(String societyIdentifier) {
+        this.societyIdentifier = societyIdentifier;
     }
 
     public String getTitle() {
@@ -84,12 +82,12 @@ public class BroadcastMessage {
         this.flatNumbers = flatNumbers;
     }
 
-    public String getSentBy() {
-        return sentBy;
+    public List<String> getDeliveryMethods() {
+        return deliveryMethods;
     }
 
-    public void setSentBy(String sentBy) {
-        this.sentBy = sentBy;
+    public void setDeliveryMethods(List<String> deliveryMethods) {
+        this.deliveryMethods = deliveryMethods;
     }
 
     public LocalDateTime getSentAt() {
@@ -100,19 +98,19 @@ public class BroadcastMessage {
         this.sentAt = sentAt;
     }
 
-    public String getDeliveryMethod() {
-        return deliveryMethod;
+    public String getSentBy() {
+        return sentBy;
     }
 
-    public void setDeliveryMethod(String deliveryMethod) {
-        this.deliveryMethod = deliveryMethod;
+    public void setSentBy(String sentBy) {
+        this.sentBy = sentBy;
     }
 
-    public int getIsActive() {
-        return isActive;
+    public boolean isActive() {
+        return active;
     }
 
-    public void setIsActive(int isActive) {
-        this.isActive = isActive;
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }

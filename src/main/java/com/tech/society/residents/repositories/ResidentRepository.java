@@ -7,21 +7,17 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
 public interface ResidentRepository extends MongoRepository<Resident, String> {
 
-    // Get resident by customId
-    Optional<Resident> findByCustomId(Long customId);
+    Optional<Resident> findByResidentIdAndSocietyIdentifier(String residentId, String societyIdentifier);
 
-    // Delete one resident by customId
-    void deleteByCustomId(Long customId);
+    List<Resident> findBySocietyIdentifier(String societyIdentifier);
 
-    // Find all residents by list of custom IDs
-    List<Resident> findByCustomIdIn(List<Long> customIds);
+    List<Resident> findByFlatNumberAndSocietyIdentifier(String flatNumber, String societyIdentifier);
 
-    // Delete all residents by list of custom IDs
-    void deleteByCustomIdIn(List<Long> customIds);
+    List<Resident> findByBlockNumberAndSocietyIdentifier(String blockNumber, String societyIdentifier);
 
-    // Check existence by customId
-    boolean existsByCustomId(Long customId);
+    Optional<Resident> findByEncryptedMobileNumberAndSocietyIdentifier(String encryptedMobile, String societyIdentifier);
+
+    List<Resident> findByActiveTrueAndSocietyIdentifier(String societyIdentifier);
 }

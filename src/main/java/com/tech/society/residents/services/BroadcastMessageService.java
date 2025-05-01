@@ -1,23 +1,16 @@
 package com.tech.society.residents.services;
 
+import com.tech.society.residents.dto.BroadcastMessageDTO;
+import com.tech.society.residents.dto.RequestContext;
 import com.tech.society.residents.models.BroadcastMessage;
-import com.tech.society.residents.repositories.BroadcastMessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class BroadcastMessageService {
+public interface BroadcastMessageService {
 
-    @Autowired
-    private BroadcastMessageRepository repository;
-
-    public List<BroadcastMessage> getAll() {
-        return repository.findAll();
-    }
-
-    public BroadcastMessage send(BroadcastMessage message) {
-        return repository.save(message);
-    }
+    BroadcastMessageDTO sendBroadcast(BroadcastMessageDTO dto, RequestContext ctx);
+    List<BroadcastMessageDTO> getAllMessages(RequestContext ctx);
+    List<BroadcastMessageDTO> getForFlat(String flatNumber, RequestContext ctx);
 }

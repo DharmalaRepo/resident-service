@@ -9,5 +9,12 @@ import java.util.List;
 
 
 public interface AlertReminderRepository extends MongoRepository<AlertReminder, String> {
-    List<AlertReminder> findByTriggerDateBefore(LocalDateTime date);
+
+    List<AlertReminder> findByResidentIdAndSocietyIdentifier(String residentId, String societyIdentifier);
+
+    List<AlertReminder> findBySocietyIdentifier(String societyIdentifier);
+
+    List<AlertReminder> findByTriggerDateBetweenAndSocietyIdentifier(LocalDateTime from, LocalDateTime to, String societyIdentifier);
+
+    List<AlertReminder> findByActiveTrueAndSentFalseAndTriggerDateBefore(LocalDateTime now);
 }

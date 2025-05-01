@@ -1,0 +1,5 @@
+user-service:
+  url: http://localhost:9091/api/users/register-user
+  auth:
+    username: admin
+    password: admin123

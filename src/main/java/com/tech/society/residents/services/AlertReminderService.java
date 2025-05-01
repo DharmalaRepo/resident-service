@@ -1,5 +1,7 @@
 package com.tech.society.residents.services;
 
+import com.tech.society.residents.dto.AlertReminderDTO;
+import com.tech.society.residents.dto.RequestContext;
 import com.tech.society.residents.models.AlertReminder;
 import com.tech.society.residents.repositories.AlertReminderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,17 +10,10 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Service
-public class AlertReminderService {
+public interface AlertReminderService {
 
-    @Autowired
-    private AlertReminderRepository repository;
-
-    public AlertReminder createReminder(AlertReminder reminder) {
-        return repository.save(reminder);
-    }
-
-    public List<AlertReminder> getUpcomingReminders() {
-        return repository.findByTriggerDateBefore(LocalDateTime.now().plusDays(7));
-    }
+    AlertReminderDTO createReminder(AlertReminderDTO dto, RequestContext ctx);
+    List<AlertReminderDTO> getUpcomingReminders(RequestContext ctx);
+    List<AlertReminderDTO> getAllReminders(RequestContext ctx);
+    void deleteReminder(String reminderId, RequestContext ctx);
 }

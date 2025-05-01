@@ -1,37 +1,14 @@
-package com.tech.society.residents.models;
+package com.tech.society.residents.dto;
 
-import lombok.*;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.time.LocalDateTime;
-
-@Document(collection = "vehicles")
-public class Vehicle extends AuditableModel {
-
-    @Id
-    private String id;
-
-    private String vehicleId;            // Custom ID (UUID or generated)
-    private String societyIdentifier;
+public class VehicleDTO {
+    private String vehicleId;
     private String residentId;
-
     private String flatNumber;
     private String vehicleNumber;
-    private String vehicleType;          // CAR, BIKE, etc.
+    private String vehicleType;
     private String brand;
     private String color;
     private String parkingSlot;
-
-    private boolean active = true;       // Soft delete support
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getVehicleId() {
         return vehicleId;
@@ -39,14 +16,6 @@ public class Vehicle extends AuditableModel {
 
     public void setVehicleId(String vehicleId) {
         this.vehicleId = vehicleId;
-    }
-
-    public String getSocietyIdentifier() {
-        return societyIdentifier;
-    }
-
-    public void setSocietyIdentifier(String societyIdentifier) {
-        this.societyIdentifier = societyIdentifier;
     }
 
     public String getResidentId() {
@@ -103,13 +72,5 @@ public class Vehicle extends AuditableModel {
 
     public void setParkingSlot(String parkingSlot) {
         this.parkingSlot = parkingSlot;
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
     }
 }

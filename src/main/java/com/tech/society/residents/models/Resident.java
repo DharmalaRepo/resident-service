@@ -2,63 +2,39 @@ package com.tech.society.residents.models;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
 @Document(collection = "Residents")
-public class Resident {
+public class Resident extends AuditableModel {
 
     @Id
     private String id;
-    private long customId;
+
+    private String residentId;
+    private String societyIdentifier;
+
     private String name;
     private String flatNumber;
-    private String mobileNumber;
-    private String email;
-    private String whatsappNumber;
-    //private List<Vehicle> vehicles;
-    private String residentType;     // Owner or Tenant
-    private String residencyStatus;  // Active / Vacated
-    private Date moveInDate;
-    private Date moveOutDate;
+    private String blockNumber;
+    private String encryptedMobileNumber;
+    private String encryptedEmail;
+    private String encryptedWhatsappNumber;
 
-    private Date createdDate;
-    private String createdBy;
-    private Date modifiedDate;
-    private String modifiedBy;
-    private int isActive;
+    private ResidentType residentType;
+    private ResidencyStatus residencyStatus;
+    private LocalDateTime moveInDate;
+    private LocalDateTime moveOutDate;
+    private boolean showInDirectory = true;
+    private boolean active = true;
+
+    private boolean loginCreated = false;
+
+    private List<FamilyMember> familyMembers;
 
     public Resident() {
-    }
-
-    public Resident(String id, long customId, String name, String flatNumber, String mobileNumber, String email, String whatsappNumber, String residentType, String residencyStatus, Date moveInDate, Date moveOutDate, Date createdDate, String createdBy, Date modifiedDate, String modifiedBy, int isActive) {
-        this.id = id;
-        this.customId = customId;
-        this.name = name;
-        this.flatNumber = flatNumber;
-        this.mobileNumber = mobileNumber;
-        this.email = email;
-        this.whatsappNumber = whatsappNumber;
-        //this.vehicles = vehicles;
-        this.residentType = residentType;
-        this.residencyStatus = residencyStatus;
-        this.moveInDate = moveInDate;
-        this.moveOutDate = moveOutDate;
-        this.createdDate = createdDate;
-        this.createdBy = createdBy;
-        this.modifiedDate = modifiedDate;
-        this.modifiedBy = modifiedBy;
-        this.isActive = isActive;
-    }
-
-    private int societyId;
-
-    public int getSocietyId() {
-        return societyId;
-    }
-
-    public void setSocietyId(int societyId) {
-        this.societyId = societyId;
     }
 
     public String getId() {
@@ -69,12 +45,20 @@ public class Resident {
         this.id = id;
     }
 
-    public long getCustomId() {
-        return customId;
+    public String getResidentId() {
+        return residentId;
     }
 
-    public void setCustomId(long customId) {
-        this.customId = customId;
+    public void setResidentId(String residentId) {
+        this.residentId = residentId;
+    }
+
+    public String getSocietyIdentifier() {
+        return societyIdentifier;
+    }
+
+    public void setSocietyIdentifier(String societyIdentifier) {
+        this.societyIdentifier = societyIdentifier;
     }
 
     public String getName() {
@@ -93,99 +77,99 @@ public class Resident {
         this.flatNumber = flatNumber;
     }
 
-    public String getMobileNumber() {
-        return mobileNumber;
+    public String getBlockNumber() {
+        return blockNumber;
     }
 
-    public void setMobileNumber(String mobileNumber) {
-        this.mobileNumber = mobileNumber;
+    public void setBlockNumber(String blockNumber) {
+        this.blockNumber = blockNumber;
     }
 
-    public String getEmail() {
-        return email;
+    public String getEncryptedMobileNumber() {
+        return encryptedMobileNumber;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEncryptedMobileNumber(String encryptedMobileNumber) {
+        this.encryptedMobileNumber = encryptedMobileNumber;
     }
 
-    public String getWhatsappNumber() {
-        return whatsappNumber;
+    public String getEncryptedEmail() {
+        return encryptedEmail;
     }
 
-    public void setWhatsappNumber(String whatsappNumber) {
-        this.whatsappNumber = whatsappNumber;
+    public void setEncryptedEmail(String encryptedEmail) {
+        this.encryptedEmail = encryptedEmail;
     }
 
-    public String getResidentType() {
+    public String getEncryptedWhatsappNumber() {
+        return encryptedWhatsappNumber;
+    }
+
+    public void setEncryptedWhatsappNumber(String encryptedWhatsappNumber) {
+        this.encryptedWhatsappNumber = encryptedWhatsappNumber;
+    }
+
+    public ResidentType getResidentType() {
         return residentType;
     }
 
-    public void setResidentType(String residentType) {
+    public void setResidentType(ResidentType residentType) {
         this.residentType = residentType;
     }
 
-    public String getResidencyStatus() {
+    public ResidencyStatus getResidencyStatus() {
         return residencyStatus;
     }
 
-    public void setResidencyStatus(String residencyStatus) {
+    public void setResidencyStatus(ResidencyStatus residencyStatus) {
         this.residencyStatus = residencyStatus;
     }
 
-    public Date getMoveInDate() {
+    public LocalDateTime getMoveInDate() {
         return moveInDate;
     }
 
-    public void setMoveInDate(Date moveInDate) {
+    public void setMoveInDate(LocalDateTime moveInDate) {
         this.moveInDate = moveInDate;
     }
 
-    public Date getMoveOutDate() {
+    public LocalDateTime getMoveOutDate() {
         return moveOutDate;
     }
 
-    public void setMoveOutDate(Date moveOutDate) {
+    public void setMoveOutDate(LocalDateTime moveOutDate) {
         this.moveOutDate = moveOutDate;
     }
 
-    public Date getCreatedDate() {
-        return createdDate;
+    public boolean isShowInDirectory() {
+        return showInDirectory;
     }
 
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
+    public void setShowInDirectory(boolean showInDirectory) {
+        this.showInDirectory = showInDirectory;
     }
 
-    public String getCreatedBy() {
-        return createdBy;
+    public boolean isActive() {
+        return active;
     }
 
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
-    public Date getModifiedDate() {
-        return modifiedDate;
+    public boolean isLoginCreated() {
+        return loginCreated;
     }
 
-    public void setModifiedDate(Date modifiedDate) {
-        this.modifiedDate = modifiedDate;
+    public void setLoginCreated(boolean loginCreated) {
+        this.loginCreated = loginCreated;
     }
 
-    public String getModifiedBy() {
-        return modifiedBy;
+    public List<FamilyMember> getFamilyMembers() {
+        return familyMembers;
     }
 
-    public void setModifiedBy(String modifiedBy) {
-        this.modifiedBy = modifiedBy;
-    }
-
-    public int getIsActive() {
-        return isActive;
-    }
-
-    public void setIsActive(int isActive) {
-        this.isActive = isActive;
+    public void setFamilyMembers(List<FamilyMember> familyMembers) {
+        this.familyMembers = familyMembers;
     }
 }
